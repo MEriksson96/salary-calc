@@ -85,3 +85,9 @@ input:focus {
 .negative {
   color: #dc2626;
 }
+
+@media (max-width: 500px) {
+  .container {
+    width: 80%;
+  }
+}
