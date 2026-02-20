@@ -107,4 +107,8 @@ input[type="radio"]:focus {
   .container {
     width: 80%;
   }
+
+  .radio-buttons {
+    margin-bottom: 40px;
+  }
 }
