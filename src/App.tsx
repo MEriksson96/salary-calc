@@ -29,9 +29,6 @@ export const App = () => {
     {
       percent: 80,
     },
-    {
-      percent: 83,
-    },
   ];
 
   const getTotalCost = () => {
@@ -59,7 +56,7 @@ export const App = () => {
 
   return (
     <div className="container">
-      <h1>Kostnadskalkyl</h1>
+      <h1>Lönekalkyl</h1>
       <div className="radio-buttons">
         {radioButtons.map((x) => (
           <label key={x.percent} className="radio-item">
