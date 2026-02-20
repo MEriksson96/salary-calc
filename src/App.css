@@ -46,7 +46,8 @@ h1 {
   text-align: right;
 }
 
-input {
+input[type="number"],
+input[type="text"] {
   width: 120px;
   padding: 6px 10px;
   border-radius: 6px;
@@ -59,6 +60,11 @@ input:focus {
   outline: none;
   border-color: #6366f1;
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+input[type="radio"]:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .total {
@@ -84,6 +90,17 @@ input:focus {
 
 .negative {
   color: #dc2626;
+}
+
+.radio-buttons {
+  display: flex;
+  justify-content: center; /* center the whole group */
+  gap: 40px; /* controls space BETWEEN 70%, 80%, 83% */
+}
+
+.radio-item {
+  display: flex;
+  gap: 6px;
 }
 
 @media (max-width: 500px) {

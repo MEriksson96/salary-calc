@@ -14,8 +14,11 @@ export const getVacation = (salary: number) => (salary * vacationTax) / 100;
 export const getVacationPayExtraTaxAmount = (vacation: number) =>
   (vacation * socialFee) / 100;
 
-export const getTotalSum = (rate: number, numberOfDays: number) =>
-  rate * 8 * numberOfDays * 0.8;
+export const getTotalSum = (
+  rate: number,
+  numberOfDays: number,
+  percent: number,
+) => (rate * 8 * numberOfDays * percent) / 100;
 
 export const formatNumber = (number: number) =>
   new Intl.NumberFormat("sv-SE", {

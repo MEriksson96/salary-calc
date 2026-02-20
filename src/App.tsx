@@ -11,11 +11,28 @@ import {
   mobileCost,
 } from "./utils";
 
+type PercentProps = {
+  percent: number;
+};
+
 export const App = () => {
+  const [percent, setPercent] = useState(80);
   const [rate, setRate] = useState(0);
   const [salary, setSalary] = useState(0);
   const [numberOfDays, setNumberOfDays] = useState(21);
   const [pension, setPension] = useState(4000);
+
+  const radioButtons: PercentProps[] = [
+    {
+      percent: 70,
+    },
+    {
+      percent: 80,
+    },
+    {
+      percent: 83,
+    },
+  ];
 
   const getTotalCost = () => {
     return getTotal(
@@ -26,12 +43,13 @@ export const App = () => {
       getExtraSalaryFee(pension),
       getVacation(salary),
       getVacationPayExtraTaxAmount(getVacation(salary)),
-      getTotalSum(rate, numberOfDays),
+      getTotalSum(rate, numberOfDays, percent),
     );
   };
 
   const getSavedAmount = () => {
-    const leftAmount = getTotalSum(rate, numberOfDays) - getTotalCost();
+    const leftAmount =
+      getTotalSum(rate, numberOfDays, percent) - getTotalCost();
     if (getTotalCost() < 0) {
       return getTotalCost();
     }
@@ -42,7 +60,20 @@ export const App = () => {
   return (
     <div className="container">
       <h1>Kostnadskalkyl</h1>
-
+      <div className="radio-buttons">
+        {radioButtons.map((x) => (
+          <label key={x.percent} className="radio-item">
+            <input
+              type="radio"
+              name="percent"
+              value={x.percent}
+              checked={percent === x.percent}
+              onChange={(e) => setPercent(Number(e.target.value))}
+            />
+            {x.percent}%
+          </label>
+        ))}
+      </div>
       <div className="item">
         <span className="label">Timpris</span>
         <input
@@ -61,9 +92,9 @@ export const App = () => {
       </div>
 
       <div className="item">
-        <span className="label">Totala summan 80%</span>
+        <span className="label">Totala summan {percent}%</span>
         <span className="value">
-          {formatNumber(getTotalSum(rate, numberOfDays))}
+          {formatNumber(getTotalSum(rate, numberOfDays, percent))}
         </span>
       </div>
 
